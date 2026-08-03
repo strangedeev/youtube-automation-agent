@@ -1,0 +1,182 @@
+{
+  "category": "Long-Form Dark Stories / True Crime / History",
+  "hashtags": [
+    "#truecrime",
+    "#truestory",
+    "#darkhistory",
+    "#mystery",
+    "#realstory",
+    "#documentary",
+    "#unsolved",
+    "#history",
+    "#storytime"
+  ],
+  "angles": [
+    {
+      "id": "titanic",
+      "weight": 6,
+      "contentStyle": "cinematic minute-by-minute documentary retelling of a single Titanic or great maritime disaster — one ship, one night, one decision at a time. Chapters follow real chronology: the build-up, the fatal moment, the chaos, the survivors, the aftermath. Calm, measured, haunting delivery grounded in the documented record. Every claim verifiable; never invent dialogue or numbers. End on the detail that stays with the viewer.",
+      "topics": [
+        "The final hours of the Titanic told minute by minute",
+        "The Titanic's sister ship Britannic and why she sank even faster",
+        "The Californian: the ship that watched the Titanic sink and never came",
+        "The Carpathia's desperate midnight race to reach the Titanic",
+        "Inside the Titanic's engine room during the final two hours",
+        "The Titanic's lifeboats: the decisions that cost hundreds of lives",
+        "The wireless operators who stayed at their posts as the Titanic sank",
+        "The Titanic's band and what really happened in the final hour",
+        "Third class on the Titanic: the passengers who never reached the deck",
+        "The Lusitania sank in eighteen minutes — the full story",
+        "The Empress of Ireland: Canada's forgotten Titanic",
+        "The Wilhelm Gustloff: the deadliest shipwreck in history",
+        "The Edmund Fitzgerald and the storm that took all twenty-nine",
+        "The Andrea Doria collision and the rescue of sixteen hundred people",
+        "The SS Eastland disaster at the Chicago dock",
+        "What the wreck of the Titanic revealed decades later",
+        "The Titanic's near-collision minutes into her maiden voyage",
+        "The men who kept the Titanic's lights burning until the end"
+      ]
+    },
+    {
+      "id": "unexplained",
+      "weight": 5,
+      "contentStyle": "mega-compilation documentary narration — ~20 real documented unexplained events per video, grouped into themed chapters, each event told in 100-150 words with a real place, a real year, and the one detail that has never been explained. Calm, archival, matter-of-fact tone that makes the impossible feel documented. The creepiest event in the whole video always lands last.",
+      "topics": [
+        "Creepy historical events that no one has ever been able to explain",
+        "Unexplained events from history that were witnessed by hundreds of people",
+        "Historical events that sound completely fake but are thoroughly documented",
+        "Unexplained disappearances throughout history where the evidence made no sense",
+        "Unexplained discoveries archaeologists have made that shouldn't exist",
+        "Unexplained mysteries throughout history that were finally solved",
+        "Unexplained events from the world wars that official records can't account for",
+        "Unexplained natural phenomena scientists have observed but cannot reproduce",
+        "Unexplained maritime mysteries — ships and crews that defied explanation",
+        "Unexplained ancient technology that took centuries to understand",
+        "Unexplained events entire towns witnessed at the same time",
+        "Unexplained signals, sounds, and transmissions with no known source",
+        "Unexplained things found frozen in ice around the world",
+        "Unexplained deaths throughout history that investigators never closed",
+        "Unexplained places on Earth where the normal rules seem to break down",
+        "Unexplained objects that fell from the sky and were actually recovered"
+      ]
+    },
+    {
+      "id": "hiddenhistory",
+      "weight": 4,
+      "contentStyle": "primary-source historical deep dive — one obscure but thoroughly documented historical episode, framed around what the original records, witnesses, and documents actually said. Archival, specific, restrained: quote what the record states, name the year of the record, walk through what was found and what the documents left unresolved. The framing is always 'here is what the record actually says', never speculation.",
+      "topics": [
+        "What miners actually found in the Great Lakes copper pits — and the records that documented who dug them first",
+        "What the 1900 rescue crew found at the Eilean Mor lighthouse — the log entries that made no sense",
+        "What Roman records actually said about the day Pompeii went silent — the letters that survived",
+        "What the 1845 Franklin expedition's recovered notes actually said — and what searchers found decades later",
+        "What medieval chroniclers recorded about the dancing plague of 1518 — the official accounts",
+        "What the Roanoke governor's own journal said about the colony he left behind",
+        "What 1908 Siberian witnesses told investigators about the Tunguska blast — the expedition records",
+        "What the recovered Mary Celeste log actually contained — and what the boarding party reported",
+        "What ancient Egyptian work records actually say about who built the pyramids",
+        "What the 1937 search teams actually found while looking for Amelia Earhart — the radio logs",
+        "What Viking sagas recorded about lands west of Greenland — centuries before Columbus",
+        "What the miners who found the Antikythera mechanism actually reported — the 1901 records",
+        "What court records from the Salem witch trials actually documented — testimony that survived",
+        "What the 1911 census recorded about the villages that vanished from the map",
+        "What whalers' logbooks actually recorded about creatures science hadn't named yet",
+        "What the original Dyatlov Pass investigation files actually concluded — released decades later"
+      ]
+    },
+    {
+      "id": "truecrime",
+      "weight": 4,
+      "contentStyle": "long-form true crime narration in a calm, measured documentary tone. Lay out the case chronologically — victim, timeline, investigation, break in the case, resolution or the reason it remains unsolved. Use only well-documented public facts. Build dread through pacing and detail, not sensationalism.",
+      "topics": [
+        "The Golden State Killer — 40 years, DNA genealogy, and the arrest nobody saw coming",
+        "The Zodiac Killer — every lead investigators followed and why none of them closed the case",
+        "The West Memphis Three — a wrongful conviction built on rumor and a purity ring",
+        "The Long Island Serial Killer — a decade of victims and a case that is still open",
+        "The BTK Killer — how a floppy disk ended a 30-year hunt",
+        "The Idaho student murders — the timeline investigators pieced together minute by minute",
+        "The Delphi murders — two girls, one video clip, and years of silence before an arrest",
+        "The Boston Strangler — thirteen victims and the confession nobody fully believed",
+        "The Green River Killer — America's most prolific serial killer and how he evaded capture for 20 years",
+        "The JonBenet Ramsey case — every theory investigators pursued and why none of them stuck",
+        "The Watts family murders — the timeline that unraveled a father's story in 24 hours",
+        "The Freeway Phantom — the unsolved murders of six girls in Washington D.C. in the 1970s"
+      ]
+    },
+    {
+      "id": "betrayal",
+      "weight": 4,
+      "contentStyle": "long-form dramatic narrative storytelling in third person, built like a documentary retelling of a real betrayal or revenge story. Open with the discovery moment, wind back to show how the deception was built over time, then walk through the unraveling and consequences in detail. Use vivid, specific human detail — real timelines, real stakes, real dialogue where documented.",
+      "topics": [
+        "The man who ran two entire families for 30 years without either one finding out",
+        "The financial advisor who quietly drained his own parents' retirement savings",
+        "The soldier who faked his own death to escape a marriage — and was found a decade later",
+        "The woman who discovered her 'husband' was already married in three other states",
+        "The business partner who secretly registered the company in his own name alone",
+        "The best man who had been having an affair with the bride for two years before the wedding",
+        "The nanny who slowly took over a family's identity and finances over five years",
+        "The coworker who stole a decade of research and published it as his own",
+        "The sister who forged power of attorney over her aging parents behind the family's back",
+        "The employee who built a shadow business using his employer's client list for years",
+        "The fiancé exposed live at his own engagement party by the woman he was also seeing",
+        "The foster parent who was secretly collecting benefits for children who had already left the home"
+      ]
+    },
+    {
+      "id": "darkhistory",
+      "weight": 3,
+      "contentStyle": "long-form documentary-style history narration. Open with the single most dramatic moment, then rewind to give full context, causes, and key figures, before walking chronologically through the event to its resolution and lasting impact. Grounded entirely in verifiable historical fact — no invented dialogue or dates.",
+      "topics": [
+        "The Tuskegee syphilis study — 40 years of a lie the U.S. government told 600 men",
+        "Unit 731 — Japan's secret human experimentation program and why so few were ever punished",
+        "The Radium Girls — the factory workers who were dying and were told they were fine",
+        "The Tulsa Race Massacre — the two days that destroyed America's wealthiest Black community",
+        "The Belgian Congo under Leopold II — the atrocity hidden behind rubber quotas",
+        "The MK-Ultra program — the CIA's decades-long human experiments on its own citizens",
+        "The Salem witch trials — the real chain of events that turned neighbors into executioners",
+        "Operation Paperclip — how the U.S. secretly recruited Nazi scientists after WWII",
+        "The Triangle Shirtwaist Factory fire — the disaster that changed labor law forever",
+        "The Lobotomy era — how a Nobel Prize-winning procedure destroyed thousands of lives",
+        "The Opium Wars — how one drug reshaped the balance of global power for a century",
+        "The Stanford Prison Experiment — what really happened in the six days it ran"
+      ]
+    },
+    {
+      "id": "mystery",
+      "weight": 3,
+      "contentStyle": "long-form documentary mystery narration in a calm, methodical tone. Lay out exactly what is known, walk through every credible theory in turn with its supporting evidence and its flaws, and end on the detail that still cannot be explained. No dramatization beyond the facts — the mystery itself should carry the tension.",
+      "topics": [
+        "MH370 — every theory investigators have pursued and what the satellite data actually shows",
+        "The Dyatlov Pass incident — nine hikers, walking through every leading theory in order",
+        "The Voynich Manuscript — 100 years of failed attempts to crack a 600-year-old code",
+        "D.B. Cooper — the only unsolved hijacking in American aviation history, theory by theory",
+        "The Roanoke Colony — 115 people vanished, and the four leading explanations investigators still debate",
+        "The Sodder children disappearance — a house fire, five missing children, and a family that never stopped looking",
+        "The Isdal Woman — an unidentified body in Norway and the Cold War theories that followed",
+        "The Oak Island Money Pit — 200 years of digging, six deaths, and what's actually been found",
+        "The Mary Celeste — a ship found intact with no crew, and every theory since 1872",
+        "The Bermuda Triangle — separating the real disappearances from the myths, case by case",
+        "The Taman Shud case — an unidentified body, a coded poem, and a mystery that outlived a nation",
+        "The Zodiac Killer's uncracked ciphers — what the one decoded message actually revealed"
+      ]
+    },
+    {
+      "id": "veteran",
+      "weight": 2,
+      "contentStyle": "long-form emotional documentary storytelling about real military service members — acts of extraordinary kindness, sacrifice, or redemption. Build the story chronologically: who they were, the moment that defined them, and the lasting impact on the people they affected. Grounded in real, verifiable accounts — never invented details.",
+      "topics": [
+        "The Medal of Honor recipient who gave up his own rescue seat to save a stranger",
+        "The WWII veteran who spent 50 years searching for the family of the soldier who saved him",
+        "The Vietnam veteran who built homes for homeless veterans until the day he died",
+        "The soldier who returned to adopt the war orphan he had carried to safety decades earlier",
+        "The medic who saved dozens under fire and never spoke about it until his 90th birthday",
+        "The veteran who anonymously paid off his entire platoon's debts after coming home",
+        "The prisoner of war who forgave his captor and visited him 40 years later",
+        "The veteran who walked across the country to raise awareness for PTSD after losing his best friend",
+        "The soldier who hid an enemy child from his own unit and later adopted her",
+        "The last surviving member of his unit and the promise he kept for 60 years",
+        "The veteran who returned every medal he earned to the families of the men who didn't make it home",
+        "The unit that secretly supported a fallen soldier's family for the rest of their lives"
+      ]
+    }
+  ]
+}

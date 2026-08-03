@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Secrets — never commit. Use config/credentials.example.json as the template.
+config/credentials.json
+config/tokens.json
+
+# Generated content, working data, and the local sqlite db
+data/
+uploads/
+temp/
+graphify-out/
+
+# Downloaded models (whisper.cpp etc.) — large binaries, re-downloadable
+models/
+
+# Logs
+logs/
+*.log
+
+# Test/scratch artifacts — keep the scripts, drop the generated media
+test-longform/**/*.mp4
+test-longform/**/*.mp3
+test-longform/**/*.png
+test-longform/**/*.wav
+test-longform/**/renders/
+
+# OS cruft
+.DS_Store

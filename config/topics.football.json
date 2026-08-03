@@ -1,0 +1,91 @@
+{
+  "category": "Football / FIFA World Cup 2026",
+
+  "introCard": false,
+  "hashtags": [
+    "#WorldCup", "#WorldCup2026", "#football", "#soccer", "#fifa",
+    "#footballshorts", "#soccershorts", "#footy"
+  ],
+  "firstComments": [
+    "Who's winning the 2026 World Cup? Drop your pick 👇",
+    "Comment your GOAT 🐐",
+    "Agree or disagree? Let's hear it 👇",
+    "Who you got for 2026? 👇",
+    "Drop a 🔥 if you're hyped for the World Cup.",
+    "Did I get this right? Tell me your take 👇"
+  ],
+  "angles": [
+    {
+      "id": "story",
+      "weight": 3,
+      "contentStyle": "dramatic, emotional football stories told like a gripping documentary — the rise, the heartbreak, the redemption. Cinematic and human, focused on one player or one moment, with real stakes and a payoff that gives the viewer chills.",
+      "topics": [
+        "The night a 17-year-old Pelé announced himself to the world",
+        "Diego Maradona's Hand of God — the goal that split a nation in two",
+        "How Zinedine Zidane's headbutt ended his career on the biggest stage",
+        "The substitute who came on and won his country the World Cup",
+        "Roger Milla at 38 — the oldest man to light up a World Cup",
+        "The Brazilian Ronaldo's mysterious collapse before the 1998 final",
+        "Andrés Escobar — the own goal that cost a man his life",
+        "How an unknown North Korean team shocked Italy in 1966",
+        "Iniesta's goal in the 116th minute that gave Spain everything",
+        "The keeper who saved three penalties and became a national hero",
+        "Gazza's tears — the moment that changed English football forever",
+        "The Croatia underdog run nobody saw coming"
+      ]
+    },
+    {
+      "id": "facts",
+      "weight": 2,
+      "contentStyle": "punchy, fast-paced fun-fact rundowns about football and the World Cup. Each one hooks in the first second with a stat that sounds impossible, then stacks 3-4 surprising facts that build to the wildest one. High shareability, zero filler.",
+      "topics": [
+        "World Cup records that will probably never be broken",
+        "Insane facts about the FIFA World Cup trophy itself",
+        "The strangest rules in football history",
+        "Things you never knew about World Cup penalty shootouts",
+        "How much World Cup winners actually get paid",
+        "The fastest goals ever scored at a World Cup",
+        "Bizarre superstitions of football's greatest players",
+        "Facts about the 2026 World Cup that make it the biggest ever",
+        "The most red cards ever shown in a single World Cup match",
+        "Why the World Cup ball changes every single tournament",
+        "Countries that have never won but came painfully close",
+        "The youngest and oldest players in World Cup history"
+      ]
+    },
+    {
+      "id": "prediction",
+      "weight": 1,
+      "contentStyle": "bold, confident hot takes and predictions about the 2026 World Cup. Pick a side, back it with sharp reasoning, and dare the viewer to disagree. Opinionated and engagement-baiting, ends by inviting them to drop their own pick.",
+      "topics": [
+        "Why this is the year an underdog finally wins the World Cup",
+        "The three teams most likely to win the 2026 World Cup",
+        "The dark horse nobody is talking about for 2026",
+        "Why the host nations could go further than anyone expects",
+        "The young star who will break out at the 2026 World Cup",
+        "Will this be Messi's and Ronaldo's last ever World Cup?",
+        "The biggest team that will crash out in the group stage",
+        "Why 48 teams changes everything about how the World Cup is won",
+        "The player who will win the Golden Boot in 2026",
+        "Which European giant is most likely to disappoint in 2026"
+      ]
+    },
+    {
+      "id": "recap",
+      "weight": 2,
+      "contentStyle": "dramatic blow-by-blow retellings of legendary World Cup matches and moments, like a sports commentator reliving it in real time. Builds tension second by second toward the iconic image everyone remembers.",
+      "topics": [
+        "Germany 7-1 Brazil — the night the host nation was humiliated",
+        "The 2006 final and Zidane's shocking exit",
+        "Spain vs Netherlands 2010 — the dirtiest final ever played",
+        "The greatest World Cup final ever: France vs Argentina 2022",
+        "England's 1966 final and the goal that still divides people",
+        "Italy vs France 1982 — the comeback that stunned the world",
+        "The Battle of Nuremberg — football's most violent match",
+        "Senegal shocking defending champions France in 2002",
+        "The Maracanazo — Uruguay silencing 200,000 Brazilians in 1950",
+        "Argentina vs England 1986 — two goals four minutes apart"
+      ]
+    }
+  ]
+}

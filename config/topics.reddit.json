@@ -1,0 +1,56 @@
+{
+  "_comment": "ARCHIVED REDDIT-STORIES THEME. To restore after the World Cup: cp config/topics.reddit.json config/topics.json (then pm2 restart). See archive/reddit-theme/README.md.",
+  "category": "Reddit Stories",
+  "introCard": true,
+  "hashtags": [
+    "#reddit", "#aita", "#redditstories", "#redditdrama",
+    "#storytime", "#relationship", "#pettyrevenge", "#truestory"
+  ],
+  "firstComments": [
+    "NTA or YTA? Drop your verdict 👇 I read every single one.",
+    "What would YOU have done in this situation? 👇",
+    "The audacity 😤 Comment if you've dealt with someone like this.",
+    "Were they wrong or am I missing something? 👇",
+    "Drop a ✅ if they were right or ❌ if they went too far.",
+    "This one got me. Would you have handled it the same way? 👇",
+    "The ending 😭 Comment your reaction below, I reply to everyone."
+  ],
+  "angles": [
+    {
+      "id": "drama",
+      "weight": 1,
+      "contentStyle": "gripping, emotional first-person stories that feel completely real — like a true confession someone posted online",
+      "topics": [
+        "My girlfriend was caught cheating, and her excuse made it ten times worse",
+        "My husband has been hiding a second phone for our entire marriage",
+        "I found my fiancé's secret dating profile a week before the wedding",
+        "My wife's \"work trips\" were not work trips, and the truth gutted me",
+        "My partner's best friend told me a secret that ended our relationship",
+        "My parents are gold diggers and they tried to use my inheritance",
+        "My sister stole my identity and lived a double life for years",
+        "My mother chose my abuser over me, and I finally walked away",
+        "My in-laws hired a private investigator to dig up dirt before my wedding",
+        "My brother forged our late father's will and nearly got away with it",
+        "My boss fired me for a mistake he actually made five years ago",
+        "I caught my coworkers running a betting pool on my divorce",
+        "My manager stole my project, took the promotion, then asked for my help",
+        "HR sided with my harasser until I showed them what I had recorded",
+        "I trained my replacement before realizing they were hired to replace me",
+        "I caught my neighbor using my backyard for illegal midnight deliveries",
+        "My landlord installed hidden microphones to spy on every tenant",
+        "A stranger at my door knew details about my life he should not have",
+        "My new neighbor slowly tried to claim half of my property as theirs",
+        "I found a hidden camera in a gift from my lifelong best friend",
+        "I found journals proving my late father led a completely different life",
+        "I inherited a locked safe and its contents destroyed my family",
+        "I discovered the charity I donated to for years was completely fabricated",
+        "My therapist was using my trauma as plots for her bestselling novels",
+        "My closest friend has been secretly dating my ex for two years",
+        "My childhood best friend opened credit cards in my name across three states",
+        "My maid of honor tried to sabotage my wedding to take my place",
+        "My best friend faked an entire illness for sympathy and money",
+        "The friend I supported through everything testified against me in court"
+      ]
+    }
+  ]
+}

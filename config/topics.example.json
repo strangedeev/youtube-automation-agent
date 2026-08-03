@@ -1,0 +1,17 @@
+{
+  "_comment": "Copy this file to config/topics.json to choose your own niche. 'contentStyle' shapes how every story/video sounds. 'topics' is the pool the system picks from each run (it avoids recently used ones). Swap these for ANY niche — see the examples in the README.",
+
+  "contentStyle": "gripping, emotional first-person stories that feel completely real — like a true confession someone posted online",
+  "category": "Drama",
+
+  "topics": [
+    "My girlfriend was caught cheating, and her excuse made it ten times worse",
+    "My boss fired me for a mistake he actually made five years ago",
+    "I found a hidden camera in a gift from my lifelong best friend",
+    "My sister stole my identity and lived a double life for years",
+    "My landlord installed hidden microphones to spy on every tenant",
+    "My closest friend has been secretly dating my ex for two years",
+    "I inherited a locked safe and its contents destroyed my family",
+    "My in-laws hired a private investigator to dig up dirt before my wedding"
+  ]
+}
