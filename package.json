@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "setup": "node setup.js",
     "scheduler": "node schedules/daily-automation.js",
     "test": "node test.js",
     "agent:strategy": "node agents/content-strategy-agent.js",
@@ -15,9 +14,6 @@
     "agent:production": "node agents/production-management-agent.js",
     "agent:publishing": "node agents/publishing-scheduling-agent.js",
     "agent:analytics": "node agents/analytics-optimization-agent.js",
-    "workflow:daily": "node workflows/daily-content-pipeline.js",
-    "workflow:weekly": "node workflows/weekly-strategy-review.js",
-    "db:init": "node database/init.js",
     "credentials:setup": "node utils/credential-manager.js setup"
   },
   "dependencies": {
@@ -47,5 +43,6 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "license": "MIT"
 }

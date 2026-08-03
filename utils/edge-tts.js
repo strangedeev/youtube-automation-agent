@@ -10,11 +10,24 @@ const execAsync = promisify(exec);
 
 // Microsoft Edge's online TTS — free, no API key, no daily quota. Used for
 // long-form narration so the scarce Gemini TTS free tier (15 requests/day)
-// isn't the bottleneck on 3000+ word scripts. Shipped as a CLI inside
-// MoneyPrinterTurbo's venv, which already lives beside this project.
-const EDGE_TTS_BIN = path.resolve(
-  __dirname, '..', '..', '..', 'MoneyPrinterTurbo', '.venv', 'bin', 'edge-tts'
-);
+// isn't the bottleneck on 3000+ word scripts.
+//
+// Resolution order:
+//   1. EDGE_TTS_BIN env var (explicit override)
+//   2. `edge-tts` on PATH (normal `pip install edge-tts`)
+//   3. a sibling MoneyPrinterTurbo venv, if one happens to be checked out
+function resolveEdgeTTSBin() {
+  if (process.env.EDGE_TTS_BIN) return process.env.EDGE_TTS_BIN;
+  try {
+    const which = require('child_process')
+      .execSync('command -v edge-tts 2>/dev/null', { encoding: 'utf8' }).trim();
+    if (which) return which;
+  } catch (_) { /* not on PATH — fall through */ }
+  return path.resolve(
+    __dirname, '..', '..', '..', 'MoneyPrinterTurbo', '.venv', 'bin', 'edge-tts'
+  );
+}
+const EDGE_TTS_BIN = resolveEdgeTTSBin();
 
 // GuyNeural: measured, documentary-appropriate US male voice — matches the
 // calm true-crime/history tone. Swap here to change the long-form voice.

@@ -505,9 +505,12 @@ class DailyAutomation {
   }
 
   async logAutomationEvent(eventType, status, data = {}) {
+    // Redact before persisting — provider errors can embed an API key from the
+    // request URL, and this row is surfaced in the dashboard failures panel.
+    const { redactSecrets } = require('../utils/logger');
     await this.db.executeQuery(
       'INSERT INTO automation_events (event_type, status, data, created_at) VALUES (?, ?, ?, datetime("now"))',
-      [eventType, status, JSON.stringify(data)]
+      [eventType, status, redactSecrets(JSON.stringify(data))]
     );
   }
 

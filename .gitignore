@@ -5,6 +5,20 @@ node_modules/
 config/credentials.json
 config/tokens.json
 
+# Defensive secret patterns — catch anything added later, before it's staged.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+**/secrets.json
+*service-account*.json
+*serviceaccount*.json
+*credentials.json
+!*credentials.example.json
+
 # Generated content, working data, and the local sqlite db
 data/
 uploads/

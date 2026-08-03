@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Automation Agent — automated Shorts &amp; long-form video pipeline</title>
+<meta name="description" content="An end-to-end pipeline that researches, writes, narrates, edits and publishes YouTube Shorts and long-form documentary videos. Node.js, FFmpeg, whisper.cpp.">
+<meta property="og:title" content="YouTube Automation Agent">
+<meta property="og:description" content="Researches, writes, narrates, edits and publishes YouTube Shorts and long-form documentary videos — end to end.">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --bg:#ffffff; --bg-alt:#f6f7f9; --fg:#12151a; --muted:#5b6472;
+    --line:#e3e7ec; --accent:#c0392b; --accent-2:#0b7285; --code-bg:#f2f4f7;
+    --radius:10px; --maxw:960px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0d1117; --bg-alt:#141a22; --fg:#e6edf3; --muted:#9aa7b4;
+      --line:#232c37; --accent:#ff6b5a; --accent-2:#4dd0e1; --code-bg:#161b22;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+  a{color:var(--accent-2)}
+  code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  code{background:var(--code-bg); padding:.15em .4em; border-radius:5px; font-size:.9em}
+  pre{background:var(--code-bg); border:1px solid var(--line); border-radius:var(--radius);
+      padding:16px; overflow-x:auto; font-size:14px; line-height:1.55}
+  pre code{background:none; padding:0}
+
+  header{border-bottom:1px solid var(--line); background:var(--bg-alt)}
+  .hero{padding:72px 0 60px}
+  .eyebrow{
+    display:inline-block; font-size:12px; letter-spacing:.13em; text-transform:uppercase;
+    color:var(--muted); border:1px solid var(--line); border-radius:100px;
+    padding:5px 13px; margin-bottom:22px; background:var(--bg);
+  }
+  h1{font-size:clamp(32px,5.4vw,50px); line-height:1.12; margin:0 0 16px; letter-spacing:-.022em}
+  .lede{font-size:clamp(17px,2.3vw,20px); color:var(--muted); max-width:62ch; margin:0 0 30px}
+  .btns{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    display:inline-block; padding:11px 20px; border-radius:var(--radius);
+    text-decoration:none; font-weight:600; font-size:15px; border:1px solid var(--line);
+  }
+  .btn-primary{background:var(--fg); color:var(--bg); border-color:var(--fg)}
+  .btn-ghost{background:var(--bg); color:var(--fg)}
+
+  section{padding:56px 0; border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(21px,3vw,27px); margin:0 0 10px; letter-spacing:-.015em}
+  .sub{color:var(--muted); margin:0 0 26px; max-width:64ch}
+  h3{font-size:17px; margin:0 0 7px}
+
+  .grid{display:grid; gap:18px}
+  @media(min-width:720px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
+  .card{border:1px solid var(--line); border-radius:var(--radius); padding:20px; background:var(--bg-alt)}
+  .card p{margin:0; color:var(--muted); font-size:15px}
+  .tag{
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em;
+    text-transform:uppercase; padding:3px 9px; border-radius:100px; margin-bottom:10px;
+  }
+  .tag-auto{background:rgba(13,148,136,.14); color:var(--accent-2)}
+  .tag-gate{background:rgba(192,57,43,.14); color:var(--accent)}
+
+  table{width:100%; border-collapse:collapse; font-size:14.5px; display:block; overflow-x:auto}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap}
+  th{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
+  td:last-child,th:last-child{white-space:normal}
+
+  ul.clean{margin:0; padding-left:20px; color:var(--muted); font-size:15px}
+  ul.clean li{margin-bottom:7px}
+  .note{
+    border-left:3px solid var(--accent); background:var(--bg-alt);
+    padding:14px 18px; border-radius:0 var(--radius) var(--radius) 0; font-size:15px; color:var(--muted);
+  }
+  .note strong{color:var(--fg)}
+  footer{padding:36px 0 56px; color:var(--muted); font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hero">
+    <span class="eyebrow">Node.js · FFmpeg · whisper.cpp</span>
+    <h1>YouTube Automation Agent</h1>
+    <p class="lede">
+      An end-to-end pipeline that researches a topic, writes the script, narrates it, sources
+      matching footage, burns in captions, and publishes — for both Shorts and long-form
+      documentary videos.
+    </p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://github.com/strangedeev/youtube-automation-agent">View on GitHub</a>
+      <a class="btn btn-ghost" href="https://github.com/strangedeev/youtube-automation-agent#setup">Setup guide</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <h2>Two pipelines, one codebase</h2>
+    <p class="sub">Shorts run unattended. Long-form stops for a human before anything goes live.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <span class="tag tag-auto">Fully automated</span>
+        <h3>Shorts — 1080×1920</h3>
+        <p>
+          Picks a topic, writes a ~60-second script, narrates it, assembles vertical video with
+          burned-in captions over stock or gameplay footage, and publishes on a daily schedule.
+          No human in the loop.
+        </p>
+      </div>
+      <div class="card">
+        <span class="tag tag-gate">Review gate</span>
+        <h3>Long-form — 1920×1080</h3>
+        <p>
+          A 7-chapter outline, written chapter by chapter to reach ~3,000 words. Each chapter gets
+          its own footage, weighted to its share of the narration. Renders to a review folder and
+          <em>stops</em> — nothing uploads until you approve it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How a video gets made</h2>
+    <p class="sub">Each stage is an agent; the scheduler chains them and retries transient failures.</p>
+<pre><code>topic selection  →  script writing  →  thumbnail  →  SEO  →  production  →  publish
+     │                    │                                      │
+     │                    │                                      ├── narration (TTS)
+     │                    │                                      ├── footage sourcing
+     │                    │                                      ├── caption track
+     │                    │                                      └── FFmpeg assembly
+     │                    └── LLM via local router, direct-provider fallback
+     └── weighted angles × real view-count performance</code></pre>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What makes the long-form path different</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Beat-matched footage</h3>
+        <p>Every chapter carries its own search query, so visuals change with the story instead of
+           looping one background. Clip duration is weighted to the chapter's narration length.</p>
+      </div>
+      <div class="card">
+        <h3>Word-level captions</h3>
+        <p>whisper.cpp transcribes the rendered narration to word timings, producing
+           highlight-style captions burned into the frame.</p>
+      </div>
+      <div class="card">
+        <h3>Chapter-wise writing</h3>
+        <p>Asking a model for 3,000 words in one call reliably undershoots. Writing seven
+           ~400-word chapters against an outline does not.</p>
+      </div>
+      <div class="card">
+        <h3>Quota-aware narration</h3>
+        <p>Long-form narrates with <code>edge-tts</code> — free and unmetered — because the
+           Gemini TTS free tier allows only 15 requests a day.</p>
+      </div>
+      <div class="card">
+        <h3>Performance feedback</h3>
+        <p>Real view counts per angle produce a 0.5×–2× weighting on future topic selection,
+           applied only after an angle has 3+ published videos.</p>
+      </div>
+      <div class="card">
+        <h3>Honest analytics</h3>
+        <p>When the Analytics API is unavailable, data is skipped rather than simulated. The
+           system never optimises against invented numbers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quick start</h2>
+    <p class="sub">Needs Node.js 18+, FFmpeg, whisper.cpp, and free-tier API keys.</p>
+<pre><code>git clone https://github.com/strangedeev/youtube-automation-agent.git
+cd youtube-automation-agent
+npm install
+
+# credentials (gitignored — never commit the filled-in copy)
+cp config/credentials.example.json config/credentials.json
+
+# whisper model for captions (~141 MB)
+mkdir -p models
+curl -L -o models/ggml-base.en.bin \
+  https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin
+
+npm start   # dashboard + API on http://localhost:3456</code></pre>
+    <div class="note">
+      <strong>Publishing is irreversible.</strong> Videos go live using the
+      <code>channel.defaultPrivacy</code> value in your credentials file. Set it to
+      <code>unlisted</code> or <code>private</code> while you are still testing.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Selected endpoints</h2>
+    <p class="sub">The server is local-only and unauthenticated — don't expose port 3456.</p>
+    <table>
+      <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>POST</td><td><code>/generate</code></td><td>Generate a video — <code>{"format":"short"|"long"}</code></td></tr>
+        <tr><td>GET</td><td><code>/review</code></td><td>Long-form videos awaiting review</td></tr>
+        <tr><td>POST</td><td><code>/review/:id/approve</code></td><td>Uploads an approved long-form video</td></tr>
+        <tr><td>GET</td><td><code>/analytics/angle-performance</code></td><td>Per-angle performance and current weighting</td></tr>
+        <tr><td>GET</td><td><code>/failures</code></td><td>Recent automation failures with timestamps</td></tr>
+        <tr><td>GET</td><td><code>/health</code></td><td>Service and agent status</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Known limitations</h2>
+    <p class="sub">Stated plainly, so nothing here is a surprise after you clone it.</p>
+    <ul class="clean">
+      <li><strong>Stock footage is era-limited.</strong> Historical topics sometimes return
+          plausible but anachronistic clips. Query wording steers this; it won't be perfect.</li>
+      <li><strong>Thumbnails are procedural</strong> — a stock image plus a text overlay. Fine for
+          Shorts; for long-form, expect to replace them by hand.</li>
+      <li><strong>Encoding is slow.</strong> A 17-minute 1080p render takes roughly 20 minutes on
+          an M-series Mac alongside other services.</li>
+      <li><strong>Outstanding dependency advisories</strong>, mostly in the
+          <code>sqlite3 → node-gyp</code> build toolchain; fixes need breaking major upgrades.</li>
+      <li><strong>No automatic quality gate</strong> on long-form — a human watches it before approval.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    MIT licensed. Generated videos depend on third-party APIs and stock media — you are responsible
+    for complying with each provider's terms and with YouTube's policies on automated content.
+  </div>
+</footer>
+
+</body>
+</html>

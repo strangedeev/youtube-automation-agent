@@ -2,6 +2,35 @@ const winston = require('winston');
 const path = require('path');
 const chalk = require('chalk');
 
+// Several provider APIs take the key as a URL query param (Gemini, Pixabay).
+// When one of those calls fails, the axios error message embeds the full URL —
+// key included — and that message gets logged, persisted to automation_events,
+// and rendered in the dashboard's failures panel. Redact centrally so a
+// credential can never leak into a log file, the database, or the UI.
+const SECRET_PATTERNS = [
+  /([?&](?:key|api_key|apikey|access_token|token)=)[^&\s"']+/gi, // key in query string
+  /\bAIza[0-9A-Za-z_-]{20,}/g,        // Google / Gemini
+  /\bnvapi-[0-9A-Za-z_-]{20,}/g,      // NVIDIA NIM
+  /\bsk-[0-9A-Za-z]{20,}/g,           // OpenAI-style
+  /\bgh[pousr]_[0-9A-Za-z]{20,}/g,    // GitHub tokens
+  /\bfreellmapi-[0-9a-f]{20,}/gi,     // local router key
+  /\bya29\.[0-9A-Za-z_.-]{20,}/g,     // Google OAuth access token
+  /\bGOCSPX-[0-9A-Za-z_-]{10,}/g      // Google OAuth client secret
+];
+
+function redactSecrets(value) {
+  if (value == null) return value;
+  let s = typeof value === 'string' ? value : String(value);
+  for (const re of SECRET_PATTERNS) {
+    // Only the query-string pattern has a capture group (the `?key=` prefix we
+    // want to keep). For the rest, replace() passes the match offset as arg 2,
+    // so guard on the type rather than truthiness.
+    s = s.replace(re, (m, prefix) =>
+      (typeof prefix === 'string' ? `${prefix}[REDACTED]` : '[REDACTED]'));
+  }
+  return s;
+}
+
 class Logger {
   constructor(component = 'System') {
     this.component = component;
@@ -46,16 +75,19 @@ class Logger {
   }
 
   info(message, ...args) {
+    message = redactSecrets(message);
     this.winston.info(message, ...args);
     console.log(this.formatConsoleMessage('INFO', message, chalk.blue));
   }
 
   success(message, ...args) {
+    message = redactSecrets(message);
     this.winston.info(message, ...args);
     console.log(this.formatConsoleMessage('SUCCESS', message, chalk.green));
   }
 
   warn(message, ...args) {
+    message = redactSecrets(message);
     this.winston.warn(message, ...args);
     console.log(this.formatConsoleMessage('WARN', message, chalk.yellow));
   }
@@ -64,8 +96,9 @@ class Logger {
     // `error` is sometimes a real Error object, sometimes just a string
     // (e.g. logger.error('X failed:', err.message)) — handle both so the
     // actual failure reason never gets silently dropped.
-    const errText = error ? (error.message || String(error)) : null;
-    const errStack = (error && error.stack) || null;
+    message = redactSecrets(message);
+    const errText = error ? redactSecrets(error.message || String(error)) : null;
+    const errStack = (error && error.stack) ? redactSecrets(error.stack) : null;
 
     if (errText) {
       this.winston.error(message, { error: errText, stack: errStack, ...args });
@@ -174,4 +207,4 @@ class Logger {
   }
 }
 
-module.exports = { Logger };
+module.exports = { Logger, redactSecrets };

@@ -185,6 +185,9 @@ class YouTubeAutomationAgent {
         const items = rows.map(r => {
           let msg = '';
           try { msg = JSON.parse(r.data || '{}').error || ''; } catch (_) { msg = r.data || ''; }
+          // Defence in depth: rows written before redaction existed may still
+          // contain a key from a provider error URL.
+          msg = require('./utils/logger').redactSecrets(msg);
           // created_at is stored UTC — present in AEST/AEDT, DD/MM/YYYY HH:MM
           let when = r.created_at;
           try {
