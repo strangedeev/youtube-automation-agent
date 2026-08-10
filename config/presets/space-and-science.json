@@ -1,0 +1,107 @@
+{
+  "id": "space-and-science",
+  "label": "Space & Science — astronomy, physics and engineering",
+  "short": {
+    "category": "Space / Science / Engineering",
+    "introCard": false,
+    "hashtags": ["#space", "#science", "#astronomy", "#physics", "#didyouknow", "#shorts"],
+    "firstComments": [
+      "Which one broke your brain? 👇",
+      "Space is genuinely strange.",
+      "Follow for one of these a day."
+    ],
+    "seoTags": {
+      "niche": ["space facts", "science facts", "astronomy", "physics explained"],
+      "broad": ["shorts", "did you know", "science"]
+    },
+    "angles": [
+      {
+        "id": "scale",
+        "weight": 4,
+        "contentStyle": "make an incomprehensible scale feel concrete by anchoring it to something familiar, then pulling the comparison apart. Calm, wondering tone.",
+        "topics": [
+          "Distances in space that break every intuition we have",
+          "How long light takes to reach us from different objects",
+          "What the sky looked like when ancient light left its source",
+          "Objects so dense a teaspoon would outweigh a mountain",
+          "Timescales where all of human history is a rounding error",
+          "The gaps between things in an atom, drawn to scale",
+          "Speeds that sound impossible until you do the maths",
+          "Temperatures at the extremes of what we've measured",
+          "How much of the universe we can never reach",
+          "Sizes that don't fit inside any comparison that works"
+        ]
+      },
+      {
+        "id": "engineering",
+        "weight": 3,
+        "contentStyle": "one machine, structure or mission explained by the single hardest problem its engineers had to solve. Concrete, technical but plain-spoken.",
+        "topics": [
+          "The hardest engineering problem in getting to orbit",
+          "How spacecraft survive re-entry heating",
+          "Why certain structures shouldn't stand up but do",
+          "The navigation problem of landing on another world",
+          "How instruments detect signals weaker than background noise",
+          "Machines built to operate where no repair is possible",
+          "The cooling problem behind the most powerful computers",
+          "Why building very tall and very deep are opposite problems",
+          "How we measure things too small to see",
+          "Redundancy design in systems that cannot be allowed to fail"
+        ]
+      },
+      {
+        "id": "discovery",
+        "weight": 3,
+        "contentStyle": "the story of one discovery — what was believed before, the moment it broke, and what changed as a result. Chronological and grounded.",
+        "topics": [
+          "A measurement that overturned an accepted theory",
+          "The signal that was almost dismissed as equipment error",
+          "A prediction confirmed decades after it was made",
+          "The accident in a lab that started a whole field",
+          "An observation nobody could explain for years",
+          "The experiment that was expected to fail and didn't",
+          "A pattern spotted in data everyone else had already seen",
+          "The instrument that revealed something unintended",
+          "A theory rejected in its time and vindicated later",
+          "The result that had to be checked because it seemed wrong"
+        ]
+      }
+    ]
+  },
+  "long": {
+    "category": "Long-Form Documentary — Space, Science & Engineering",
+    "hashtags": ["#space", "#science", "#documentary", "#engineering"],
+    "seoTags": {
+      "niche": ["space documentary", "science documentary", "engineering explained"],
+      "broad": ["documentary", "science"]
+    },
+    "angles": [
+      {
+        "id": "mission",
+        "weight": 4,
+        "contentStyle": "full documentary account of one mission or project: why it was attempted, what nearly stopped it, the critical moments, and what it ultimately produced. Strictly factual, chronological.",
+        "topics": [
+          "A mission reconstructed from launch to final transmission",
+          "The project that ran over budget and changed everything anyway",
+          "How a failure investigation rewrote an engineering discipline",
+          "The decades-long effort to detect one specific thing",
+          "A spacecraft that outlived its design lifetime many times over",
+          "The rescue improvised when a mission went wrong mid-flight"
+        ]
+      },
+      {
+        "id": "concept",
+        "weight": 3,
+        "contentStyle": "build one difficult concept from first principles across chapters, each chapter adding a layer, until the full picture is clear. Patient and structured.",
+        "topics": [
+          "What we actually know about the beginning of the universe",
+          "How we measure the age and size of everything",
+          "The unresolved problems at the edge of physics",
+          "What happens at the boundaries where our models break",
+          "How life-detection instruments actually work",
+          "The full story of one fundamental constant"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "facts-and-mystery",
+  "label": "Facts & Mystery — science, history and unexplained events",
+  "short": {
+    "category": "Science / Mystery / History Facts",
+    "introCard": false,
+    "hashtags": ["#facts", "#didyouknow", "#history", "#science", "#mystery", "#shorts"],
+    "firstComments": [
+      "Which one surprised you most? 👇",
+      "Did you already know this?",
+      "Share this with someone who'd want to know."
+    ],
+    "seoTags": {
+      "niche": ["history facts", "science facts", "unexplained mysteries", "true stories"],
+      "broad": ["shorts", "did you know", "facts"]
+    },
+    "angles": [
+      {
+        "id": "unexplained",
+        "weight": 4,
+        "contentStyle": "rapid-fire compilations of real documented events that remain unexplained — each gets two or three sentences: what happened, why it still can't be explained, then straight to the next. Calm and matter-of-fact, never sensational.",
+        "topics": [
+          "Unexplained events witnessed by entire towns at the same time",
+          "Signals scientists recorded and still cannot trace",
+          "Archaeological discoveries that shouldn't exist for their time",
+          "Sounds from the deep ocean that took decades to identify",
+          "Disappearances where the evidence made the case stranger",
+          "Structures built with techniques we still can't reproduce",
+          "Documented cases doctors still cite in textbooks",
+          "Photographs experts have never been able to debunk",
+          "Weather events that broke every record on file",
+          "Objects found frozen in ice that shouldn't be there"
+        ]
+      },
+      {
+        "id": "facts",
+        "weight": 3,
+        "contentStyle": "punchy rundown of four or five genuinely surprising verified facts around one theme. Each fact lands in a sentence or two, strongest one last.",
+        "topics": [
+          "Facts about the human body that sound made up",
+          "Everyday objects with genuinely strange origins",
+          "Historical coincidences that are almost too neat",
+          "Things that were completely normal a century ago",
+          "Animal abilities that outperform our best technology",
+          "Inventions that were discovered entirely by accident",
+          "Numbers and scales that are impossible to picture",
+          "Foods with far stranger histories than you'd expect",
+          "Words whose original meanings were the opposite",
+          "Everyday things that are far older than you'd guess"
+        ]
+      },
+      {
+        "id": "story",
+        "weight": 3,
+        "contentStyle": "cinematic minute-by-minute retelling of one real documented event. Build tension chronologically and end on the detail that stays with the viewer.",
+        "topics": [
+          "The rescue that shouldn't have been survivable",
+          "A single decision that changed the outcome of a disaster",
+          "The expedition that vanished and what searchers found",
+          "An escape that took years to plan",
+          "The experiment that went wrong in an unexpected way",
+          "A discovery made by someone who wasn't looking for it",
+          "The warning nobody acted on until it was too late",
+          "A survival story that lasted far longer than expected",
+          "The message that arrived decades after it was sent",
+          "One night that reshaped a city"
+        ]
+      }
+    ]
+  },
+  "long": {
+    "category": "Long-Form Documentary — History, Mystery & Science",
+    "hashtags": ["#documentary", "#history", "#mystery", "#truestory"],
+    "seoTags": {
+      "niche": ["documentary", "history documentary", "unexplained", "true stories"],
+      "broad": ["history", "documentary channel"]
+    },
+    "angles": [
+      {
+        "id": "deepdive",
+        "weight": 4,
+        "contentStyle": "cinematic minute-by-minute documentary retelling of one real event, structured chronologically: the build-up, the turning point, the aftermath. Calm, measured, grounded strictly in the documented record. Never invent dialogue or numbers.",
+        "topics": [
+          "The full timeline of a disaster told hour by hour",
+          "An expedition that went wrong and the search that followed",
+          "The investigation that took decades to resolve",
+          "A rescue operation reconstructed from the official record",
+          "The engineering failure that changed an entire industry",
+          "How a single misread signal escalated into a catastrophe"
+        ]
+      },
+      {
+        "id": "compilation",
+        "weight": 3,
+        "contentStyle": "themed compilation documentary — around twenty real documented cases grouped into chapters by theme. Each case gets its own beat; the strongest theme lands last.",
+        "topics": [
+          "Documented events that still have no accepted explanation",
+          "Discoveries that overturned what experts believed",
+          "Cases where the official record contradicts itself",
+          "Historical events that were covered up and later confirmed",
+          "Mysteries that were eventually solved, and how",
+          "Records and artefacts found in the wrong place entirely"
+        ]
+      }
+    ]
+  }
+}

@@ -128,21 +128,31 @@ Resolved from `EDGE_TTS_BIN`, then `PATH`. Free, no API key.
 
 ## Setup
 
+> **Starting from scratch?** Follow the **[full setup guide](docs/SETUP.md)** — it covers
+> installing the system tools, creating the Google Cloud project, and getting every API key,
+> step by step.
+
 ```bash
 git clone https://github.com/strangedeev/youtube-automation-agent.git
 cd youtube-automation-agent
 npm install
+npm run setup
 ```
 
-Create your credentials file from the template:
+The wizard checks your environment, then asks for your channel name, a starting niche, and your
+API keys. It writes `config/credentials.json` and your topic files, preserving anything already
+configured and confirming before it overwrites.
+
+Key input is hidden and never echoed. **`config/credentials.json` is gitignored and must never be
+committed.**
+
+Prefer to configure by hand? Copy the template instead:
 
 ```bash
 cp config/credentials.example.json config/credentials.json
 ```
 
-Fill in your keys. **`config/credentials.json` is gitignored and must never be committed.**
-
-Then authorise YouTube (opens an OAuth consent flow and writes `config/tokens.json`):
+Either way, finish by authorising YouTube (writes `config/tokens.json`):
 
 ```bash
 node oauth-server.js
@@ -214,10 +224,19 @@ and raise a desktop notification.
 
 ## Configuration
 
+### Channel name
+
+Set during `npm run setup`, or edit `channel.channelName` in `config/credentials.json`. The
+dashboard reads it from `/config` and uses it for the header logo and the browser tab title —
+refresh to apply, no restart needed.
+
 ### Topics and angles
 
 `config/topics.json` (Shorts) and `config/topics-longform.json` (long-form) define the content
-strategy. Each **angle** is a content style with its own topic pool and a `weight` controlling how
+strategy. The setup wizard writes them from a preset in `config/presets/`; edit them freely
+afterwards, and changes apply on the next run.
+
+Each **angle** is a content style with its own topic pool and a `weight` controlling how
 often it is picked:
 
 ```jsonc
@@ -239,8 +258,10 @@ often it is picked:
 }
 ```
 
-Higher `weight` means the angle is picked more often. Example templates:
-`config/topics.example.json`, `config/topics.reddit.json`, `config/topics.football.json`.
+Higher `weight` means the angle is picked more often. `contentStyle` is passed straight to the
+model that writes the script, so it is the strongest lever you have — be specific about tone and
+pacing. Starter presets live in `config/presets/`; see the
+[topics section of the setup guide](docs/SETUP.md#8-choosing-your-topics) for details.
 
 ### LLM provider
 

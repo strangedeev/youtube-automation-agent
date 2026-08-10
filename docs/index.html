@@ -95,7 +95,7 @@
     </p>
     <div class="btns">
       <a class="btn btn-primary" href="https://github.com/strangedeev/youtube-automation-agent">View on GitHub</a>
-      <a class="btn btn-ghost" href="https://github.com/strangedeev/youtube-automation-agent#setup">Setup guide</a>
+      <a class="btn btn-ghost" href="https://github.com/strangedeev/youtube-automation-agent/blob/main/docs/SETUP.md">Full setup guide</a>
     </div>
   </div>
 </header>
@@ -190,19 +190,45 @@
 cd youtube-automation-agent
 npm install
 
-# credentials (gitignored — never commit the filled-in copy)
-cp config/credentials.example.json config/credentials.json
-
-# whisper model for captions (~141 MB)
-mkdir -p models
-curl -L -o models/ggml-base.en.bin \
-  https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin
-
-npm start   # dashboard + API on http://localhost:3456</code></pre>
+npm run setup   # checks tools, asks for channel name, niche and keys
+npm start       # dashboard + API on http://localhost:3456</code></pre>
+    <p class="sub" style="margin-top:18px">
+      The wizard verifies your environment, lets you pick a starting niche, and takes your keys
+      with hidden input — confirming before it overwrites anything. Starting from scratch?
+      The <a href="https://github.com/strangedeev/youtube-automation-agent/blob/main/docs/SETUP.md">full setup guide</a>
+      walks through the Google Cloud project and every API key step by step.
+    </p>
     <div class="note">
       <strong>Publishing is irreversible.</strong> Videos go live using the
-      <code>channel.defaultPrivacy</code> value in your credentials file. Set it to
-      <code>unlisted</code> or <code>private</code> while you are still testing.
+      <code>channel.defaultPrivacy</code> value in your credentials file. Setup defaults it to
+      <code>unlisted</code> — keep it there until you've watched a few full renders.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Make it your channel</h2>
+    <p class="sub">Nothing about the niche is hardcoded — the setup wizard configures both.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Your topics</h3>
+        <p>
+          Pick a starting niche from the presets, then edit <code>config/topics.json</code>.
+          Content is organised into <em>angles</em> — each with its own topic pool, a
+          <code>weight</code> controlling how often it's chosen, and a <code>contentStyle</code>
+          passed straight to the script writer. Once an angle has a few published videos, real
+          view counts start tuning those weights for you.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Your channel name</h3>
+        <p>
+          Set it once during setup. The dashboard reads it live and uses it for the header logo
+          and the browser tab title, so the whole interface carries your branding rather than
+          a placeholder.
+        </p>
+      </div>
     </div>
   </div>
 </section>
