@@ -23,9 +23,28 @@
   ],
   "angles": [
     {
+      "id": "hybrid",
+      "weight": 3,
+      "contentStyle": "numbered compilation told with STORY pacing — the packaging of a listicle with the retention of a narrative. Cover exactly 3 real documented cases under one theme, but give each case 12-18 seconds of actual storytelling rather than a bare fact: set the scene (real place, real year), build to the moment it went wrong, then land the detail that still can't be explained. Move between cases with a hard cut, no filler transitions. Save the strongest case for last. This angle exists to test a specific hypothesis: on this channel numbered titles earn roughly 2.5x the median views of non-numbered ones, while single-narrative stories hold the best retention (65% vs 45%). This format is an attempt to get both. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none.",
+      "topics": [
+        "3 ships that vanished without a distress call",
+        "3 expeditions that were never seen again",
+        "3 disappearances where the search made things stranger",
+        "3 rescues that should not have been survivable",
+        "3 machines found working long after they were abandoned",
+        "3 nights that changed a city forever",
+        "3 signals nobody has ever been able to trace",
+        "3 discoveries that arrived centuries too early",
+        "3 survivors who lived through the same disaster twice",
+        "3 warnings that were ignored until it was too late",
+        "3 places where people reported the same thing independently",
+        "3 wrecks that were found in the wrong ocean entirely"
+      ]
+    },
+    {
       "id": "titanic",
       "weight": 6,
-      "contentStyle": "gripping minute-by-minute retellings of Titanic and other great maritime disasters — one documented moment, person, or decision per video: what happened, the human detail nobody talks about, and the haunting aftermath. Calm, cinematic, documentary delivery. Always factual and verifiable, never sensationalised. End on the detail that stays with you.",
+      "contentStyle": "gripping minute-by-minute retellings of Titanic and other great maritime disasters — one documented moment, person, or decision per video: what happened, the human detail nobody talks about, and the haunting aftermath. Calm, cinematic, documentary delivery. Always factual and verifiable, never sensationalised. End on the detail that stays with you. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none. TITLE SPECIFICITY (critical): every title option must name a concrete subject, stake or moment. Vague, incomplete promises die — on this channel 'What Happens To Your Skin' got 2 views while '3 Baffling Places' got 972 the same night, and 'Your Ship Was Almost Destroyed Minutes Into Its First Trip' got 708. If a title could describe a hundred other videos, it is wrong.",
       "topics": [
         "The Titanic passenger who survived by getting drunk",
         "What the Titanic's lookouts actually saw in the final 37 seconds",
@@ -62,7 +81,7 @@
     {
       "id": "unexplained",
       "weight": 5,
-      "contentStyle": "stacked compilations of real unexplained events — each video rapid-fires 3-4 genuinely documented mysteries around one theme, giving each mystery just 2-3 sentences: what happened, why it can't be explained, then straight to the next. Calm, matter-of-fact delivery that makes the impossible feel documented rather than sensational. End on the single most unsettling one, or on the one that was finally solved.",
+      "contentStyle": "stacked compilations of real unexplained events — each video rapid-fires 3-4 genuinely documented mysteries around one theme, giving each mystery just 2-3 sentences: what happened, why it can't be explained, then straight to the next. Calm, matter-of-fact delivery that makes the impossible feel documented rather than sensational. End on the single most unsettling one, or on the one that was finally solved. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none.",
       "topics": [
         "Unexplained events in history that made everyone stop and stare",
         "Historical events that make absolutely no sense the deeper you look",
@@ -105,7 +124,7 @@
     {
       "id": "facts",
       "weight": 3,
-      "contentStyle": "punchy, fast-paced fact rundowns on science, history, nature, and the human body. Hook hard in the first sentence with a fact that sounds impossible. Stack 4-5 surprising facts that each build on the last, saving the most jaw-dropping one for the end. Zero filler, maximum shareability — every single line should make the viewer stop scrolling.",
+      "contentStyle": "punchy, fast-paced fact rundowns on science, history, nature, and the human body. Hook hard in the first sentence with a fact that sounds impossible. Stack 4-5 surprising facts that each build on the last, saving the most jaw-dropping one for the end. Zero filler, maximum shareability — every single line should make the viewer stop scrolling. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none.",
       "topics": [
         "Facts about your own body that will genuinely creep you out",
         "Space facts that prove we know almost nothing about the universe",
@@ -162,7 +181,7 @@
     {
       "id": "story",
       "weight": 3,
-      "contentStyle": "dramatic, cinematic retelling of one real historical event, told minute by minute or decision by decision. Open with the highest-stakes moment, then wind back to explain how we got there. Build tension through specific human details — names, exact times, precise numbers. Deliver a payoff that makes the viewer feel like they just watched a documentary in under a minute.",
+      "contentStyle": "dramatic, cinematic retelling of one real historical event, told minute by minute or decision by decision. Open with the highest-stakes moment, then wind back to explain how we got there. Build tension through specific human details — names, exact times, precise numbers. Deliver a payoff that makes the viewer feel like they just watched a documentary in under a minute. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none. TITLE SPECIFICITY (critical): every title option must name a concrete subject, stake or moment. Vague, incomplete promises die — on this channel 'What Happens To Your Skin' got 2 views while '3 Baffling Places' got 972 the same night, and 'Your Ship Was Almost Destroyed Minutes Into Its First Trip' got 708. If a title could describe a hundred other videos, it is wrong.",
       "topics": [
         "The night Chernobyl's reactor exploded — what happened in the first 60 minutes",
         "What actually happened when the Titanic hit the iceberg",
@@ -209,7 +228,7 @@
     {
       "id": "mystery",
       "weight": 2,
-      "contentStyle": "calm, measured tone that lays out exactly what we know, what we don't, and what the most credible theories are. Open with the core mystery in one sentence. Present the verified facts clearly, then hit the viewer with the one thing that still doesn't add up. End on the detail nobody has been able to explain — leave them genuinely unsettled.",
+      "contentStyle": "calm, measured tone that lays out exactly what we know, what we don't, and what the most credible theories are. Open with the core mystery in one sentence. Present the verified facts clearly, then hit the viewer with the one thing that still doesn't add up. End on the detail nobody has been able to explain — leave them genuinely unsettled. Close on a line that makes the viewer want to send this to one specific person — a 'you won't believe this' or 'tell me you knew this' beat, not a generic follow ask. Shares are the strongest distribution signal on Shorts and this channel currently gets none. TITLE SPECIFICITY (critical): every title option must name a concrete subject, stake or moment. Vague, incomplete promises die — on this channel 'What Happens To Your Skin' got 2 views while '3 Baffling Places' got 972 the same night, and 'Your Ship Was Almost Destroyed Minutes Into Its First Trip' got 708. If a title could describe a hundred other videos, it is wrong.",
       "topics": [
         "The Wow! signal — a message from deep space we have never been able to decode",
         "The Voynich Manuscript — a 600-year-old book that has defeated every codebreaker who tried",
