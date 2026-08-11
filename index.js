@@ -233,15 +233,22 @@ class YouTubeAutomationAgent {
       try {
         // Dedupe by youtube_id (falling back to id for rows without one) —
         // guards against any row that ends up double-tracked, e.g. by /sync-youtube.
-        const [published, scheduled, scripts] = await Promise.all([
+        const [published, scheduled, scripts, today] = await Promise.all([
           this.db.getRow(`SELECT COUNT(DISTINCT COALESCE(youtube_id, id)) as count FROM publish_schedule WHERE status = 'published'`),
           this.db.getRow(`SELECT COUNT(DISTINCT COALESCE(youtube_id, id)) as count FROM publish_schedule WHERE status = 'scheduled'`),
-          this.db.getRow(`SELECT COUNT(*) as count FROM scripts`)
+          this.db.getRow(`SELECT COUNT(*) as count FROM scripts`),
+          // Cadence visibility: the scheduler only publishes once a day, so
+          // anything above 1-2 here is manual. Posting many videos into a
+          // single day splits the algorithm's attention across your own
+          // uploads and makes performance impossible to attribute.
+          this.db.getRow(`SELECT COUNT(DISTINCT COALESCE(youtube_id, id)) as count FROM publish_schedule
+                          WHERE status = 'published' AND published_at >= datetime('now','-24 hours')`)
         ]);
         res.json({
           published: published?.count || 0,
           scheduled: scheduled?.count || 0,
-          scriptsGenerated: scripts?.count || 0
+          scriptsGenerated: scripts?.count || 0,
+          publishedToday: today?.count || 0
         });
       } catch (error) {
         res.status(500).json({ error: error.message });

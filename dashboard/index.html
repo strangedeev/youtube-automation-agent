@@ -289,6 +289,11 @@
         <div class="stat-value" style="color:#f59e0b" id="stat-views">—</div>
         <div class="stat-sub">across all videos</div>
       </div>
+      <div class="stat-card">
+        <div class="stat-label">Posted (24h)</div>
+        <div class="stat-value" id="stat-today">—</div>
+        <div class="stat-sub" id="stat-today-sub">scheduler posts 1/day</div>
+      </div>
     </div>
 
     <!-- Long-form awaiting review. Deliberately read-only: approving publishes
@@ -452,6 +457,21 @@
       document.getElementById('stat-published').textContent = d.published ?? '0';
       document.getElementById('stat-scheduled').textContent = d.scheduled ?? '0';
       document.getElementById('stat-scripts').textContent   = d.scriptsGenerated ?? '0';
+
+      // Cadence: anything above ~2/day is manual generation. Posting a lot into
+      // one day splits the algorithm's attention across your own uploads and
+      // makes it impossible to attribute what actually worked.
+      const today = d.publishedToday ?? 0;
+      const tEl = document.getElementById('stat-today');
+      const tSub = document.getElementById('stat-today-sub');
+      tEl.textContent = today;
+      if (today > 3) {
+        tEl.style.color = '#f59e0b';
+        tSub.textContent = 'high — dilutes attribution';
+      } else {
+        tEl.style.color = '';
+        tSub.textContent = 'scheduler posts 1/day';
+      }
     } catch (e) {
       console.warn('stats error', e);
     }

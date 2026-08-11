@@ -402,16 +402,25 @@ class ContentStrategyAgent {
   async getAnglePerformance(format) {
     const MIN_SAMPLE = 3;
     const CACHE_MS = 60 * 60 * 1000;
+    // Only consider reasonably recent uploads — a video from six months ago
+    // says little about what the algorithm rewards today.
+    const LOOKBACK_DAYS = 90;
+    // A week where the median video got fewer than this many views means the
+    // algorithm simply wasn't distributing the channel at all. Those videos
+    // carry no information about which ANGLE is good, so they're excluded.
+    const DISTRIBUTION_FLOOR = 5;
+
     this._anglePerfCache = this._anglePerfCache || {};
     const cached = this._anglePerfCache[format];
     if (cached && Date.now() - cached.fetchedAt < CACHE_MS) return cached.data;
 
     try {
+      const since = new Date(Date.now() - LOOKBACK_DAYS * 864e5).toISOString();
       const rows = await this.db.getAllRows(
-        `SELECT angle, youtube_id FROM publish_schedule
+        `SELECT angle, youtube_id, published_at FROM publish_schedule
          WHERE status = 'published' AND angle IS NOT NULL AND youtube_id IS NOT NULL
-           AND format = ?`,
-        [format]
+           AND format = ? AND published_at IS NOT NULL AND published_at >= ?`,
+        [format, since]
       );
       if (!rows.length) return {};
 
@@ -427,35 +436,77 @@ class ContentStrategyAgent {
         }
       }
 
-      // Average views per angle
-      const byAngle = {};
+      // Compare each video only against others published around the same time.
+      //
+      // Raw lifetime averages are badly misleading here: this channel sat at
+      // ~0 views for weeks before the Shorts algorithm began distributing it.
+      // An angle that happened to post mostly during the quiet stretch looked
+      // terrible, and one that posted during a push looked great — the metric
+      // was really measuring WHEN a video went out, not how good it was.
+      //
+      // So bucket by week, take that week's median as the "distribution
+      // weather", and score every video relative to it. A video that doubled
+      // its week's median scores 2.0 whether the week was big or small.
+      const weekOf = iso => {
+        const d = new Date(iso);
+        return isNaN(d) ? null : Math.floor(d.getTime() / (7 * 864e5));
+      };
+      const median = arr => {
+        if (!arr.length) return 0;
+        const s = [...arr].sort((a, b) => a - b);
+        const m = Math.floor(s.length / 2);
+        return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+      };
+
+      const buckets = {};
       for (const r of rows) {
         const v = viewsById[r.youtube_id];
-        if (v === undefined) continue;
-        (byAngle[r.angle] = byAngle[r.angle] || []).push(v);
+        const w = weekOf(r.published_at);
+        if (v === undefined || w === null) continue;
+        (buckets[w] = buckets[w] || []).push({ angle: r.angle, views: v });
       }
 
-      const avgByAngle = {};
-      for (const [angle, views] of Object.entries(byAngle)) {
-        avgByAngle[angle] = views.reduce((a, b) => a + b, 0) / views.length;
+      const byAngle = {};      // angle -> [relative scores]
+      const rawByAngle = {};   // angle -> [raw views]  (reporting only)
+      let skippedWeeks = 0;
+      for (const entries of Object.values(buckets)) {
+        const med = median(entries.map(e => e.views));
+        if (med < DISTRIBUTION_FLOOR) { skippedWeeks++; continue; }
+        for (const e of entries) {
+          (byAngle[e.angle] = byAngle[e.angle] || []).push(e.views / med);
+          (rawByAngle[e.angle] = rawByAngle[e.angle] || []).push(e.views);
+        }
       }
 
-      const allAvgs = Object.values(avgByAngle);
-      if (!allAvgs.length) return {};
-      const overallAvg = allAvgs.reduce((a, b) => a + b, 0) / allAvgs.length;
+      if (!Object.keys(byAngle).length) {
+        this.logger.info(`Angle performance (${format}): no weeks above the distribution floor yet — neutral weights`);
+        return {};
+      }
 
+      const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
       const perfMap = {};
       const report = [];
-      for (const [angle, views] of Object.entries(byAngle)) {
-        const multiplier = (views.length < MIN_SAMPLE || !overallAvg)
+      for (const [angle, scores] of Object.entries(byAngle)) {
+        // A relative score of 1.0 is "typical for its week", so it maps
+        // straight onto the weight multiplier.
+        const multiplier = scores.length < MIN_SAMPLE
           ? 1
-          : Math.max(0.5, Math.min(2.0, avgByAngle[angle] / overallAvg));
+          : Math.max(0.5, Math.min(2.0, mean(scores)));
         perfMap[angle] = multiplier;
-        report.push({ angle, avgViews: Math.round(avgByAngle[angle]), sampleSize: views.length, multiplier });
+        report.push({
+          angle,
+          avgViews: Math.round(mean(rawByAngle[angle])),
+          relScore: Math.round(mean(scores) * 100) / 100,
+          sampleSize: scores.length,
+          multiplier
+        });
       }
-      report.sort((a, b) => b.avgViews - a.avgViews);
+      report.sort((a, b) => b.relScore - a.relScore);
 
-      this.logger.info(`Angle performance (${format}): ${Object.entries(perfMap).map(([a, m]) => `${a}=${m.toFixed(2)}x`).join(', ')}`);
+      this.logger.info(
+        `Angle performance (${format}, ${skippedWeeks} low-distribution week(s) excluded): ` +
+        Object.entries(perfMap).map(([a, m]) => `${a}=${m.toFixed(2)}x`).join(', ')
+      );
       this._anglePerfCache[format] = { data: perfMap, report, fetchedAt: Date.now() };
       return perfMap;
     } catch (e) {
