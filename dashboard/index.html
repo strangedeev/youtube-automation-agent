@@ -291,6 +291,23 @@
       </div>
     </div>
 
+    <!-- Long-form awaiting review. Deliberately read-only: approving publishes
+         to YouTube and is not reversible, so it stays a deliberate command
+         rather than a button that can be clicked in passing. -->
+    <div class="card" id="review-card" style="display:none;border-left:3px solid #f59e0b;">
+      <div class="card-header" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>⏳ Awaiting your review</span>
+        <button onclick="loadReview()"
+          style="background:var(--border);color:var(--text);border:none;border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;">Refresh</button>
+      </div>
+      <div id="review-table"></div>
+      <div style="font-size:12px;color:var(--sub);margin-top:10px;">
+        These are rendered but <strong>not uploaded</strong>. Watch the file in
+        <code>data/review/</code>, then publish from your terminal:
+        <code>curl -X POST http://localhost:3456/review/&lt;id&gt;/approve</code>
+      </div>
+    </div>
+
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
       <input id="custom-topic" type="text" placeholder="Optional: type a topic for this video…"
         style="flex:1;min-width:240px;max-width:420px;padding:12px 16px;border-radius:10px;
@@ -453,9 +470,45 @@
     }
   }
 
+  // ── Long-form awaiting review ──
+  // Read-only by design: publishing is irreversible, so approval stays a
+  // deliberate terminal command rather than a one-click button.
+  async function loadReview() {
+    const card = document.getElementById('review-card');
+    const el = document.getElementById('review-table');
+    try {
+      const d = await (await fetch('/review')).json();
+      const items = d.items || [];
+      if (!items.length) { card.style.display = 'none'; return; }
+      card.style.display = '';
+      const days = iso => {
+        const n = Math.floor((Date.now() - new Date(iso)) / 864e5);
+        return n <= 0 ? 'today' : n === 1 ? '1 day ago' : `${n} days ago`;
+      };
+      el.innerHTML = `
+        <table>
+          <thead><tr><th>Title</th><th>Staged</th><th>File</th></tr></thead>
+          <tbody>
+            ${items.map(i => {
+              const age = Math.floor((Date.now() - new Date(i.stagedAt)) / 864e5);
+              const stale = age >= 3 ? ' style="color:#f59e0b;font-weight:600"' : '';
+              return `<tr>
+                <td>${esc(i.title || '(untitled)')}</td>
+                <td${stale}>${esc(days(i.stagedAt))}</td>
+                <td style="color:var(--sub);font-size:12px">${esc(i.video || '')}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>`;
+    } catch (e) {
+      card.style.display = 'none';
+    }
+  }
+
   // ── Overview ──
   async function loadOverview() {
     loadStats();
+    loadReview();
     try {
       const res = await fetch('/videos');
       const rows = await res.json();
