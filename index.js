@@ -550,7 +550,11 @@ class YouTubeAutomationAgent {
 
     try {
       const { exec } = require('child_process');
-      exec(`osascript -e 'display notification "${safeTitle}" with title "Vid Shock: long-form ready to review" sound name "Glass"'`, () => {});
+      // Read the channel name from config rather than hardcoding it, so a
+      // rename doesn't leave a stale brand in the notification.
+      const brand = (this.credentials?.credentials?.channel?.channelName || 'YouTube Automation')
+        .replace(/["'\\]/g, '');
+      exec(`osascript -e 'display notification "${safeTitle}" with title "${brand}: long-form ready to review" sound name "Glass"'`, () => {});
     } catch (_) {}
 
     return { reviewPath };
