@@ -292,7 +292,9 @@ class ContentStrategyAgent {
       try {
         this.logger.info(`Fetching Reddit stories from r/${sub}...`);
         const response = await axios.get(url, {
-          headers: { 'User-Agent': 'VidShockBot/1.0 (youtube automation)' },
+          // Identify by the project rather than the channel — a User-Agent
+          // should be a stable identifier, not something a rename invalidates.
+          headers: { 'User-Agent': 'youtube-automation-agent/1.0' },
           timeout: 15000
         });
 

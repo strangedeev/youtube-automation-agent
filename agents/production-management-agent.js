@@ -658,7 +658,9 @@ Example for a script about Chernobyl:
     const mptDir   = path.resolve(__dirname, '..', '..', '..', 'MoneyPrinterTurbo');
     const python   = path.join(mptDir, '.venv', 'bin', 'python3');
     const cli      = path.join(mptDir, 'cli.py');
-    const taskId   = `vidshock_${prodId}`;
+    // Project-scoped prefix, not channel-scoped — this names a working folder,
+    // so it shouldn't go stale when the channel is renamed.
+    const taskId   = `ytauto_${prodId}`;
     const aspect   = format === 'long' ? '16:9' : '9:16';
 
     const safeTerms = await this.generateSafeVideoTerms(scriptText, subject);

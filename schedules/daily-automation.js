@@ -521,7 +521,10 @@ class DailyAutomation {
     // day of content goes unnoticed. osascript needs no extra dependencies.
     try {
       const { exec } = require('child_process');
-      const title = `Vid Shock: ${taskName} FAILED`.replace(/"/g, "'");
+      // Channel name comes from config (via the production agent) so a rename
+      // doesn't leave a stale brand in the alert.
+      const brand = this.agents?.production?.channelName || 'YouTube Automation';
+      const title = `${brand}: ${taskName} FAILED`.replace(/"/g, "'");
       const body = String(error.message || error).slice(0, 200).replace(/"/g, "'");
       exec(
         `osascript -e "display notification \\"${body}\\" with title \\"${title}\\" sound name \\"Basso\\""`,
