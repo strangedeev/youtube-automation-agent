@@ -63,6 +63,28 @@ class NIMClient {
   }
 
   // Generate and parse JSON output. Strips markdown fences and retries parse.
+  // Models regularly emit a raw newline inside a JSON string value — a hard
+  // parse error, even though the JSON is otherwise complete and correct. It
+  // shows up most on longer narration fields, where the model breaks lines for
+  // readability. Walk the text and escape any literal control character that
+  // appears INSIDE a string, leaving structural whitespace untouched.
+  static repairControlChars(s) {
+    let out = '';
+    let inString = false;
+    let escaped = false;
+    for (const ch of s) {
+      if (escaped) { out += ch; escaped = false; continue; }
+      if (ch === '\\') { out += ch; escaped = true; continue; }
+      if (ch === '"') { inString = !inString; out += ch; continue; }
+      if (inString && ch <= '') {
+        out += ch === '\n' ? '\\n' : ch === '\r' ? '\\r' : ch === '\t' ? '\\t' : '';
+        continue;
+      }
+      out += ch;
+    }
+    return out;
+  }
+
   async generateJSON(prompt, opts = {}) {
     const raw = await this.generate(prompt, opts);
     const cleaned = raw
@@ -71,14 +93,19 @@ class NIMClient {
       .replace(/```\s*$/i, '')
       .trim();
 
-    try {
-      return JSON.parse(cleaned);
-    } catch (_) {
+    const attempts = [
+      cleaned,
+      NIMClient.repairControlChars(cleaned),
       // Models sometimes wrap JSON in prose — extract the first {...} block
-      const match = cleaned.match(/\{[\s\S]*\}/);
-      if (match) return JSON.parse(match[0]);
-      throw new Error('Could not parse JSON from LLM response');
+      (cleaned.match(/\{[\s\S]*\}/) || [])[0],
+      NIMClient.repairControlChars((cleaned.match(/\{[\s\S]*\}/) || [])[0] || '')
+    ];
+
+    for (const candidate of attempts) {
+      if (!candidate) continue;
+      try { return JSON.parse(candidate); } catch (_) { /* try the next repair */ }
     }
+    throw new Error('Could not parse JSON from LLM response');
   }
 }
 
