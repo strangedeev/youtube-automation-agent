@@ -182,6 +182,38 @@ STORY QUALITY RULES:
 - No hashtags, no emojis, no Reddit jargon (AITA, NTA, OP).${titleRules}`;
 
       // ── DRAMATIC FOOTBALL STORY (default) ─────────────────────────────────
+      // ── HYBRID: listicle packaging + story pacing ─────────────────────────
+      // Needs its own case: the default template asks for ONE story arc, so a
+      // three-case topic fell through it and produced a title that was just the
+      // raw topic string wrapped in filler ("The Truth About 3 expeditions that
+      // were ne"). Modelled on 'unexplained' (which handles multi-case
+      // compilations) but with far more room per case, since the whole point of
+      // this angle is testing whether listicle packaging can carry narrative
+      // retention.
+      case 'hybrid':
+        return `${header}
+
+{
+  "hookLine": "A 5-10 word spoken opener that drops the viewer straight into the FIRST case mid-scene, e.g. 'The lifeboats came back empty.' Never a question, never 'here are three'.",
+  "cardText": "A scroll-stopping question this video answers, e.g. 'What happened to the ships that vanished?' One sentence, ends with a question mark.",
+  "narration": "210-250 words of spoken prose for TTS covering EXACTLY 3 real documented cases. Start with the exact hookLine. Each case MUST be 70-80 words — that is 5 to 6 full sentences, NOT two. Write each case in this exact beat order: (1) the scene — real place, real year, who was aboard or present; (2) what they were doing and why it was ordinary; (3) the turn — the moment it went wrong; (4) the detail that still cannot be explained. Move between cases with a hard cut — no 'next up', no 'another case'. Save the strongest case for last.",
+  "titles": [
+    "MUST start with the digit 3, e.g. '3 Ships That Vanished Without A Distress Call'",
+    "MUST start with the digit 3, naming the stake, e.g. '3 Expeditions That Were Never Found'",
+    "MUST start with the digit 3, curiosity-gap framing, e.g. '3 Disappearances Nobody Can Explain'"
+  ]
+}
+
+QUALITY RULES:
+- EXACTLY 3 cases. Not 2, not 4. Each must be REAL and documented — real place, real year, real names where known.
+- Every title option MUST begin with the digit "3". Never open a title with "The Truth About", and never restate the topic line verbatim — write a real title.
+- LENGTH IS A HARD REQUIREMENT: 210-250 words total. Under 170 means the cases are too thin and the video fails. Reach the count by adding STORY (the scene, the turn, the human detail), never by padding or reflection.
+- Each case needs a beginning, a turn, and an unresolved detail. If a case reads like a single fact, it is too thin — give it the scene and the turn.
+- WRONG (too thin, 2 sentences): "The USS Cyclops vanished in 1918 with 300 people aboard. No distress call was ever made."
+- RIGHT (4-5 sentences): "In March 1918 the USS Cyclops left Barbados carrying 306 men and 11,000 tons of manganese ore. She was overloaded, one engine was already dead, and the captain chose to sail anyway. She never reached Baltimore. No wreckage, no oil, no distress call has ever been found — and the Navy still lists it as the single largest non-combat loss of life in its history."
+- Calm, documentary delivery. The facts carry it — no 'scientists are baffled' hype.
+- No hashtags, no emojis.${accuracy}${titleRules}`;
+
       default:
         return `${header}
 
