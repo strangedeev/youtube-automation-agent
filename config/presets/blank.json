@@ -1,0 +1,47 @@
+{
+  "id": "blank",
+  "label": "Blank template — write your own niche from scratch",
+  "short": {
+    "category": "Your Niche Here",
+    "introCard": false,
+    "hashtags": ["#shorts"],
+    "firstComments": [
+      "What did you think? 👇"
+    ],
+    "seoTags": {
+      "niche": ["your niche keyword", "another niche keyword"],
+      "broad": ["shorts"]
+    },
+    "angles": [
+      {
+        "id": "main",
+        "weight": 1,
+        "contentStyle": "Describe the tone, pacing and structure you want in plain English — this text is passed straight to the model that writes the script, so be specific about delivery, length of each beat, and how videos should end.",
+        "topics": [
+          "Replace these with real topics for your niche",
+          "One topic per line, written as you'd want it said aloud",
+          "The more specific the topic, the better the script"
+        ]
+      }
+    ]
+  },
+  "long": {
+    "category": "Your Long-Form Niche Here",
+    "hashtags": ["#documentary"],
+    "seoTags": {
+      "niche": ["your niche keyword"],
+      "broad": ["documentary"]
+    },
+    "angles": [
+      {
+        "id": "main",
+        "weight": 1,
+        "contentStyle": "Describe the documentary style you want. Long-form scripts are written as seven chapters, so mention how the story should be structured across them and how it should open and close.",
+        "topics": [
+          "Replace these with real long-form topics",
+          "These work best as a single subject with a clear arc"
+        ]
+      }
+    ]
+  }
+}

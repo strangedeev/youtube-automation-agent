@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Secrets — never commit. Use config/credentials.example.json as the template.
+config/credentials.json
+config/tokens.json
+
+# Your own content strategy. Starter templates ship in config/presets/ and
+# config/topics.example.json; the live files you edit stay out of the repo so
+# a clone never carries someone else's niche, topics or tuned weights.
+config/topics.json
+config/topics-longform.json
+
+# Defensive secret patterns — catch anything added later, before it's staged.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+**/secrets.json
+*service-account*.json
+*serviceaccount*.json
+*credentials.json
+!*credentials.example.json
+
+# Generated content, working data, and the local sqlite db
+data/
+uploads/
+temp/
+graphify-out/
+
+# Downloaded models (whisper.cpp etc.) — large binaries, re-downloadable
+models/
+
+# Logs
+logs/
+*.log
+
+# Test/scratch artifacts — keep the scripts, drop the generated media
+test-longform/**/*.mp4
+test-longform/**/*.mp3
+test-longform/**/*.png
+test-longform/**/*.wav
+test-longform/**/renders/
+
+# OS cruft
+.DS_Store
