@@ -101,9 +101,9 @@ QUALITY RULES:
   "cardText": "A scroll-stopping question this rundown answers, e.g. 'How much do you really know about the World Cup?' One sentence, ends with a question mark.",
   "narration": "90-140 words of punchy spoken prose for TTS. Start with the exact hookLine, then stack 3-4 surprising facts, each one wilder than the last, building to the most shocking one. Real numbers, real names, real years — never vague. End with exactly: 'Follow for more.'",
   "titles": [
-    "A curiosity-gap stat title, e.g. 'The World Cup Record That Will Never Be Broken'",
-    "A number-led title, e.g. '4 World Cup Facts That Sound Completely Fake'",
-    "A you-reframe title, e.g. 'You Won't Believe What Happens To The World Cup Trophy'"
+    "A number-led count title, e.g. '11 Hormones Released In Seconds' — lead with the exact count of facts covered",
+    "A number-led theme title, e.g. '4 Body Facts That Sound Completely Fake'",
+    "A curiosity-gap stat title, e.g. 'The Record That Will Never Be Broken'"
   ]
 }
 
@@ -111,6 +111,33 @@ QUALITY RULES:
 - 90-140 words total. Fast and dense — every sentence is a new fact or a sharper detail. No intros, no "did you know", no filler.
 - Each fact must be specific and verifiable: a real year, a real number, a real name.
 - Order facts so the wildest one lands last, right before the call to follow.
+- No hashtags, no emojis.${accuracy}${titleRules}`;
+
+      // ── MARITIME DISASTER COMPILATION ─────────────────────────────────────
+      // Titanic content previously fell through to the default single-story
+      // prompt and never once produced a number-led title across 7 videos —
+      // it structurally couldn't, since none of the default title templates
+      // are number-led. It was the channel's weakest angle at a 280 median
+      // while compilations ran 671. Same subject matter, compilation format.
+      case 'titanic':
+        return `${header}
+
+{
+  "hookLine": "A 5-10 word spoken opener that drops the viewer inside the first moment mid-scene, e.g. 'The lookouts had no binoculars that night.' Never a question, never 'here are' — start inside the first detail.",
+  "cardText": "A scroll-stopping question this compilation answers, e.g. 'What really happened in the Titanic's final hours?' One sentence, ends with a question mark.",
+  "narration": "120-160 words of spoken prose for TTS covering 3-4 REAL documented details, decisions or moments around this maritime theme. Start with the exact hookLine. Each one gets 2-3 sentences: what happened (real ship, real year, real name where known), then the detail that makes it land — the thing most people don't know. Move to the next with no transition filler. Save the most haunting for last. Close with exactly: 'Follow for more.'",
+  "titles": [
+    "A number-led compilation title, e.g. '4 Titanic Details That Still Don't Add Up'",
+    "A number-led mystery title, e.g. '3 Ships That Vanished Without A Mayday'",
+    "An unexplained-framing title, e.g. 'The Titanic Detail Nobody Talks About'"
+  ]
+}
+
+QUALITY RULES:
+- 120-160 words total. Density is everything — every sentence is either a new detail or the thing that makes it unforgettable.
+- Every detail must be REAL and documented: a real ship, a real year, a real name where known. Never invent a moment or exaggerate a documented one.
+- Calm, matter-of-fact, documentary tone. The facts carry themselves — no 'you won't believe' hype.
+- Prefer the human detail over the statistic: what someone saw, decided, or lost.
 - No hashtags, no emojis.${accuracy}${titleRules}`;
 
       // ── PREDICTIONS / HOT TAKES ───────────────────────────────────────────
@@ -222,9 +249,9 @@ QUALITY RULES:
   "cardText": "A scroll-stopping question this story answers, e.g. 'What's the most dramatic World Cup moment ever?' One sentence, ends with a question mark.",
   "narration": "The full story, 220-280 words, spoken prose for TTS. It MUST start with the exact hookLine, then drop straight into the action — no 'so', no 'okay so', no warm-up. Follow this beat structure so every sentence pulls the viewer forward: (1) the hook, (2) quick setup of who and what is at stake, (3) the first turn — the moment it starts, (4) the escalation — the stakes rise, the drama builds, (5) the peak — the unforgettable moment, (6) a STRONG ending where something LANDS: a triumph, a heartbreak, a consequence, a legacy. Tell it like you're gripping a friend by the shoulders. Real details: ages, names, scorelines, minutes, what was said.",
   "titles": [
-    "A cliffhanger that cuts off before the payoff, e.g. 'He Was 17. What He Did Next Was Impossible.'",
-    "A bold statement, e.g. 'The Goal That Split A Nation In Two'",
-    "A question that creates an open loop, e.g. 'How Did One Moment Change Football Forever?'"
+    "A cliffhanger that cuts off before the payoff, e.g. 'She Was 17. What She Did Next Was Impossible.'",
+    "A bold statement naming the concrete subject, e.g. 'The Night One Signal Was Missed'",
+    "A question that creates an open loop, e.g. 'How Did One Missed Signal Cost So Much?'"
   ]
 }
 
